@@ -4,6 +4,10 @@ import kotlin.io.path.moveTo
 val modVersion: String = project.property("global_version").toString()
 val platforms: List<Pair<String, String>> by gradle.extra
 
+
+println("PLATFORMS")
+println(platforms)
+
 tasks.register("buildCore") {
     group = "build"
 
