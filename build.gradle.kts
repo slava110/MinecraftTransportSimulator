@@ -20,9 +20,12 @@ val buildAllTask = tasks.register("buildForgeAll") registerAll@ {
 }
 
 for((name, moduleName) in platforms) {
+    print("GOT MODULENAME ")
+    println(moduleName)
     val module = project(moduleName)
-
-    tasks.register("build${ name.replaceFirstChar(Char::titlecase).replace(".", "").replace("-", "") }") {
+    val taskName = "build${ name.replaceFirstChar(Char::titlecase).replace(".", "").replace("-", "") }"
+    
+    tasks.register(taskName) {
         group = "build"
         doFirst {
             preBuild()
@@ -35,6 +38,10 @@ for((name, moduleName) in platforms) {
             dependsOn(this@register)
         }
     }
+    print("registered task ")
+    print(taskName)
+    print(" from module ")
+    println(moduleName)
 }
 
 fun moveToOut(subProject: Project, versionStr: String) {
