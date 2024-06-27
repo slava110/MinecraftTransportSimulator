@@ -42,8 +42,10 @@ platforms.removeAt(0) // because first element is null
 
 Files.walk(Paths.get("."),1)
     .filter { Files.isDirectory(it) }
-    .filter {it.toString().matches(Regex(".\\/mcinterface.*"))}
+    //TODO Find a way to change gradle version or forgegradle plugin for 1.12.2 version
+    // because of     /mcinterfaceforge1122/build.gradle:7
     .filter{ it.toString() != "./mcinterfaceforge1122"}
+    .filter {it.toString().matches(Regex(".\\/mcinterface.*"))} 
     .forEach {
         val module = it.toString().replace(".", "").replace("/", "")
         val dirName = it.toString().replace("./", "")
